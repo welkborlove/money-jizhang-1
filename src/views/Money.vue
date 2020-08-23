@@ -1,11 +1,13 @@
 import Money from '*@/views/Money.vue';
 <template>
-    <div>Money.vue</div>
+    <div>Money.vue
+        <Nav/>
+    </div>
 </template>
 
 <script>
     export default {
-        
+        name: 'money',
     }
 </script>
 
