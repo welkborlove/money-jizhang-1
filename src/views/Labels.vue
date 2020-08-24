@@ -1,6 +1,9 @@
 import Nav from '@/components/Nav.vue';
 <template>
-    <div>Label.vue
+    <div class="nav-wrapper">
+        <div class="content">
+            <p>Labels.vue</p>
+        </div>
         <Nav/>
     </div>
 </template>
@@ -12,5 +15,14 @@ import Nav from '@/components/Nav.vue';
 </script>
 
 <style lang="scss" scoped>
-
+  .nav-wrapper{
+      border: 1px solid blue;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+  }
+  .content{
+      overflow: auto;
+      flex-grow: 1;
+  }
 </style>
