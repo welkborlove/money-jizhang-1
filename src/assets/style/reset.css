@@ -8,3 +8,17 @@ a {
   text-decoration: none;
   color: inherit;
 }
+
+o
+ul, li {
+  list-style: none;
+}
+
+i
+button, input {
+  font: inherit;
+}
+
+:focus {
+  outline: none;
+}
