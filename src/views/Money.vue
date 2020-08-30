@@ -3,7 +3,7 @@ import Layout from '@/components/Layout.vue';
 <template >
   <Layout class-prefix="layout">
     <NumberPad />
-    <Types xxx="hi"/>
+    <Types :xxx="333"/>
     <Notes />
     <Tags />
   </Layout>

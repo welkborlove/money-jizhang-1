@@ -9,15 +9,22 @@
 
 <script lang="ts">
 import Vue from "vue";
-import {Component} from 'vue-property-decorator';
+import {Component, Prop} from 'vue-property-decorator';
 
-@Component({
-  props: {
-    propMessage:String
-  }
-})
+//TS的好处 1 自动提示更智能
+//2 你不能随便写 toString()
+//3 便于报错 无法变成 JS 严谨
+
+@Component
 export default class Types extends Vue {
   type = "-"; //'-'表示支出，'+'表示收入
+
+   @Prop(Number) xxx: number | undefined;
+   //Prop 告诉Vue xxx 不是data 是个Prop
+   //Number 告诉Vue xxx运行时是个Nunber
+   //xxx是属性名、
+   //number |undefriined 告诉TS xxx的编译时 类型
+
   selectType(type:string) {
     //type 只能是'-'和 '+'中的一个
     if (type !== "-" && type !== "+") {
@@ -25,7 +32,10 @@ export default class Types extends Vue {
     }
     this.type = type;
   }
+
+
 }
+
 /* export default {
         name: 'Types',
         props: ['xxx'],
