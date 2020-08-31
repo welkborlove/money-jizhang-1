@@ -9,7 +9,7 @@
 
 <script lang="ts">
 import Vue from "vue";
-import {Component, Prop} from 'vue-property-decorator';
+import { Component, Prop, Watch } from "vue-property-decorator";
 
 //TS的好处 1 自动提示更智能
 //2 你不能随便写 toString()
@@ -17,23 +17,18 @@ import {Component, Prop} from 'vue-property-decorator';
 
 @Component
 export default class Types extends Vue {
-  type = "-"; //'-'表示支出，'+'表示收入
-
-   @Prop(Number) xxx: number | undefined;
-   //Prop 告诉Vue xxx 不是data 是个Prop
-   //Number 告诉Vue xxx运行时是个Nunber
-   //xxx是属性名、
-   //number |undefriined 告诉TS xxx的编译时 类型
-
-  selectType(type:string) {
+   type = '-'; //'-'表示支出'+'表示收入
+  selectType(type: string) {
     //type 只能是'-'和 '+'中的一个
     if (type !== "-" && type !== "+") {
       throw new Error("type is unknown");
     }
-    this.type = type;
+    this.type = type;   
   }
-
-
+  @Watch('type')
+  onTypeChanged(value:string){
+    this.$emit('update:value',value)
+  }
 }
 
 /* export default {
