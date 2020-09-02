@@ -18,7 +18,10 @@ import Types from "@/components/Money/Types.vue";
 import Notes from "@/components/Money/Notes.vue";
 import { Component, Watch } from "vue-property-decorator";
 
-const recordList: Record[] = JSON.parse(window.localStorage.getItem('recordList')||'[]'); 
+const {model} = require('@/model.js');
+console.log(model);
+
+const recordList: Record[] = model.fetch();
 
 type Record = {
   tags: string[] | undefined;
