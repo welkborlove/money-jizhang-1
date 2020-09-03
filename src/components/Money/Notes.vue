@@ -20,7 +20,7 @@ export default class Notes extends Vue {
    @Prop({required:true}) fieldName!: string;
    @Prop() placeholder?: string;
 
-  @Watch('value')
+  @Watch('value') 
   onValueChanged(value:string){
    this.$emit('update:value',value)
   }
@@ -31,8 +31,6 @@ export default class Notes extends Vue {
 @import "~@/assets/style/helper.scss";
 .notes {
   font-size: 14px;
-  background: #f5f5f5;
-  display: block;
   padding-left: 16px;
   display: flex;
   align-items: center;
@@ -40,7 +38,7 @@ export default class Notes extends Vue {
     padding-right: 16px;
   }
   input {
-    height: 64px;
+    height: 40px;
     flex-grow: 1;
     background: transparent;
     border: none;

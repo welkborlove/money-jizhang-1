@@ -5,7 +5,9 @@ import Layout from '@/components/Layout.vue';
     
     <NumberPad @update:value="onUpdateAmount" @submit="saveRecord"/>
     <Types @update:value="onUpdateTypes"/>
-    <Notes field-name="备注" placeholder="在这里输入备注" @update:value="onUpdateNotes"/>
+    <div class="FormItem">
+         <Notes field-name="备注" placeholder="在这里输入备注" @update:value="onUpdateNotes"/>
+    </div>
     <Tags :data-source.sync="tags" @update:value="onUpdateTags" />
   </Layout>
 </template>
@@ -68,5 +70,8 @@ export default class Money extends Vue {
 .layout-content {
   display: flex;
   flex-direction: column-reverse;
+}
+.FormItem{
+    padding: 12px 0;
 }
 </style>
