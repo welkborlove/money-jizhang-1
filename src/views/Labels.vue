@@ -3,7 +3,7 @@ import Nav from '@/components/Nav.vue';
 <template>
   <Layout>
     <div class="tags">
-      <router-link class="tag" v-for="tag in tags" :key="tag.id" :to="`/labels/edit/${tag.id}`">
+      <router-link class="tag" v-for="tag in tags" :key="tag.index" :to="`/labels/edit/${tag.id}`">
         <span>{{tag.name}}</span>
         <icon name="right" />
       </router-link>
@@ -17,10 +17,11 @@ import Nav from '@/components/Nav.vue';
 <script lang="ts">
 import Vue from "vue";
 import { Component } from "vue-property-decorator";
-import tagListModel from "@/models/tagListModel";
+import Button from '@/components/Button.vue';
 
-tagListModel.fetch();
-@Component
+@Component({
+    components: {Button}
+})
 export default class Labels extends Vue {
   tags = window.tagList;  //知识点1
   createTag() {

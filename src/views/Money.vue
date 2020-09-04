@@ -20,7 +20,7 @@ import Types from "@/components/Money/Types.vue";
 import Notes from "@/components/Money/Notes.vue";
 import { Component, Watch } from "vue-property-decorator";
 import recordListModel from '@/models/recordListModel';
-import tagListModel from '@/models/tagListModel';
+
 
 const recordList = recordListModel.fetch();
 
@@ -54,7 +54,7 @@ export default class Money extends Vue {
   }
   @Watch('recordList')
      onRecordListChange()  {
-      recordListModel.save();
+      recordListModel.save(this.recordList);
   }
 }
 
