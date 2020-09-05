@@ -3,7 +3,7 @@ import Nav from '@/components/Nav.vue';
 <template>
   <Layout>
     <div class="tags">
-      <router-link class="tag" v-for="tag in tags" :key="tag.index" :to="`/labels/edit/${tag.id}`">
+      <router-link class="tag" v-for="tag in tags" :key="tag.id" :to="`/labels/edit/${tag.id}`">
         <span>{{tag.name}}</span>
         <icon name="right" />
       </router-link>
@@ -18,16 +18,17 @@ import Nav from '@/components/Nav.vue';
 import Vue from "vue";
 import { Component } from "vue-property-decorator";
 import Button from '@/components/Button.vue';
+import store from '@/store/index2.ts';
 
 @Component({
     components: {Button}
 })
 export default class Labels extends Vue {
-  tags = window.tagList;  //知识点1
+  tags = store.tagList;  //知识点1
   createTag() {
     const name = window.prompt("请输入标签名");
     if(name){
-        window.createTag(name);
+        store.createTag(name);
     }
   }
 }
