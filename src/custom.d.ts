@@ -12,11 +12,11 @@ type Tag = {
 }
 type TagListModel = {
   data: Tag[]
-  fetch: () => Tag[]
+  fetchRecords: () => Tag[]
   create: (name: string) => 'success' | 'duplicated' //success表示成功
   update: (id: string, name: string) => 'success' | 'not found' | 'duplicated'
   remove: (id: string) => boolean
-  save: () => void
+  saveRecords: () => void
 }
 
 interface Window {

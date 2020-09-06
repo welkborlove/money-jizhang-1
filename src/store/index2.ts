@@ -8,6 +8,6 @@ const store = {
     //2严重依赖 window
   
     //tag store
-  
   };
+  console.log(store)
   export default store;
