@@ -2,13 +2,12 @@ import Money from '*@/views/Money.vue';
 import Layout from '@/components/Layout.vue';
 <template >
   <Layout class-prefix="layout">
-
-    <NumberPad @update:value="onUpdateAmount" @submit="saveRecord"/>
-    <Types @update:value="onUpdateTypes"/>
+    <NumberPad @update:value="onUpdateAmount" @submit="saveRecord" />
+    <Types @update:value="onUpdateTypes" />
     <div class="FormItem">
-         <Notes field-name="备注" placeholder="在这里输入备注" @update:value="onUpdateNotes"/>
+      <Notes field-name="备注" placeholder="在这里输入备注" @update:value="onUpdateNotes" />
     </div>
-    <Tags/>
+    <Tags />
   </Layout>
 </template>
 
@@ -20,43 +19,33 @@ import Types from "@/components/Money/Types.vue";
 import Notes from "@/components/Money/Notes.vue";
 import { Component } from "vue-property-decorator";
 
-
-
 @Component({
   components: { Tags, Notes, Types, NumberPad },
-  computed: {
-    recordList(){
-      return this.$store.state.recordList;
-    }
-  }
 })
 export default class Money extends Vue {
-  record: RecordItem
- = { tags: [], notes: "", type: "-", amount: 0 };
-created(){
-  this.$store.commit('fetchRecords')
-}
-  
+  get recordList() {
+    return this.$store.state.recordList;
+  }
+  record: RecordItem = { tags: [], notes: "", type: "-", amount: 0 };
+  created() {
+    this.$store.commit("fetchRecords");
+  }
+
   onUpdateNotes(value: string) {
-    this.record.notes = value
+    this.record.notes = value;
   }
   onUpdateTypes(value: string) {
-    this.record.type = value
+    this.record.type = value;
   }
- 
+
   onUpdateAmount(value: string) {
     this.record.amount = parseFloat(value);
   }
 
-  saveRecord(){
-    this.$store.commit('createRecord',this.record);
-
+  saveRecord() {
+    this.$store.commit("createRecord", this.record);
   }
-
 }
-
-
-
 </script>
 
 <style lang="scss">
@@ -64,7 +53,7 @@ created(){
   display: flex;
   flex-direction: column-reverse;
 }
-.FormItem{
-    padding: 12px 0;
+.FormItem {
+  padding: 12px 0;
 }
 </style>
