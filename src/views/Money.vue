@@ -1,5 +1,3 @@
-import Money from '*@/views/Money.vue';
-import Layout from '@/components/Layout.vue';
 <template >
   <Layout class-prefix="layout">
     <NumberPad @update:value="onUpdateAmount" @submit="saveRecord" />

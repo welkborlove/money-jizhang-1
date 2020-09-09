@@ -1,8 +1,8 @@
 <template>
   <div>
     <ul class="types">
-      <li :class="type === '-' && 'selected'" @click="selectType('-')">支出</li>
-      <li :class="type === '+' && 'selected'" @click="selectType('+')">收入</li>
+      <li :class="{[classPrefix+'-item']: classPrefix,selected: value==='-'}" @click="selectType('-')">支出</li>
+      <li :class="{[classPrefix+'-item']: classPrefix,selected: value==='+'}" @click="selectType('+')">收入</li>
     </ul>
   </div>
 </template>
@@ -11,12 +11,11 @@
 import Vue from "vue";
 import { Component, Prop, Watch } from "vue-property-decorator";
 
-//TS的好处 1 自动提示更智能
-//2 你不能随便写 toString()
-//3 便于报错 无法变成 JS 严谨
 
 @Component
 export default class Types extends Vue {
+  @Prop(String) readonly value!: string;
+  @Prop(String) classPrefix?: string;
    type = '-'; //'-'表示支出'+'表示收入
   selectType(type: string) {
     //type 只能是'-'和 '+'中的一个
