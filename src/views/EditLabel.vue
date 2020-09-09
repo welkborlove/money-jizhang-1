@@ -21,13 +21,16 @@ import Notes from "@/components/Money/Notes.vue";
 import Button from "@/components/Button.vue";
 
 
-@Component({ components: { Button, Notes } })
+@Component({ 
+  components: { Button, Notes },
+  })
 export default class EditLabel extends Vue {
-  tag?: Tag = undefined;
-
+  get tag(){
+    return this.$store.state.currentTag;
+  }
   created() {
-
-    //this.tag =store.findTag(this.$route.params.id);
+    const id = this.$route.params.id;
+    this.$store.commit('setCurrentTag',id);
       if (!this.tag) {
         this.$router.replace('/404');
     }
@@ -36,18 +39,12 @@ export default class EditLabel extends Vue {
   update(name: string) {
     if (this.tag) {
 
-     // store.updateTag(this.tag.id, name);
     }
   }
   remove() {
     if (this.tag) {
       return
-
-     // if (store.removeTag(this.tag.id)) {
-     //   this.$router.back();
-     //   window.alert("删除失败");
-     // }
-    }
+  }
   }
   goBack() {
     this.$router.back();
