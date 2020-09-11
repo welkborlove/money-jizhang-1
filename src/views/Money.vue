@@ -37,9 +37,6 @@ export default class Money extends Vue {
   onUpdateNotes(value: string) {
     this.record.notes = value;
   }
-  onUpdateTypes(value: string) {
-    this.record.type = value;
-  }
 
   onUpdateAmount(value: string) {
     this.record.amount = parseFloat(value);
@@ -51,7 +48,7 @@ export default class Money extends Vue {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .layout-content {
   display: flex;
   flex-direction: column-reverse;
