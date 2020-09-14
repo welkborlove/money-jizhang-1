@@ -4,7 +4,7 @@ type RootState = {
   currentTag?: Tag
 }
 type RecordItem = {
-  tags: string[] | undefined;
+  tags: Tag[];
   notes: string;
   type: string;
   amount: number; //数据类型 object | string
